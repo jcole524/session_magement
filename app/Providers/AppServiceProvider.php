@@ -1,20 +1,53 @@
 <?php
 
+
+
 namespace App\Providers;
 
-use App\Models\ProgressLog;
-use App\Models\WorkoutSession;
-use App\Observers\ProgressLogObserver;
-use App\Observers\SessionObserver;
+
+
 use Illuminate\Support\ServiceProvider;
 
+use Illuminate\Support\Facades\URL;
+
+
+
 class AppServiceProvider extends ServiceProvider
+
 {
-    public function register(): void {}
+
+    /**
+
+     * Register any application services.
+
+     */
+
+    public function register(): void
+
+    {
+
+        //
+
+    }
+
+
+
+    /**
+
+     * Bootstrap any application services.
+
+     */
 
     public function boot(): void
+
     {
-        WorkoutSession::observe(SessionObserver::class);
-        ProgressLog::observe(ProgressLogObserver::class);
+
+        if (env('APP_ENV') === 'production') {
+
+            URL::forceScheme('https');
+
+        }
+
     }
+
 }
