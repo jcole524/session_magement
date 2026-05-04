@@ -20,7 +20,7 @@ class ChallengeController extends Controller
             ->latest()
             ->paginate(12);
 
-        return view('challenges.index', compact('challenges'));
+        return view('Challenges.index', compact('challenges'));
     }
 
     public function show(Challenge $challenge)
