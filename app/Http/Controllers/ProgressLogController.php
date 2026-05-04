@@ -14,10 +14,10 @@ class ProgressLogController extends Controller
     {
         abort_if(auth()->user()->isAdmin(), 403);
 
-        $logs = ProgressLog::forUser(Auth::id())
-            ->with('workoutSession')
-            ->orderByDesc('log_date')
-            ->paginate(15);
+       $logs = ProgressLog::forUser(Auth::id())
+    ->with('session')
+    ->orderByDesc('log_date')
+    ->paginate(15);
 
         return view('progress.index', compact('logs'));
     }
