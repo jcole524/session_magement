@@ -38,7 +38,7 @@ class ChallengeController extends Controller
             ->where('user_id', Auth::id())
             ->first();
 
-        return view('challenges.show', compact('challenge', 'leaderboard', 'myParticipant'));
+        return view('Challenges.show', compact('challenge', 'leaderboard', 'myParticipant'));
     }
 
     public function join(Challenge $challenge)
